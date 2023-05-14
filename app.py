@@ -23,61 +23,46 @@ def highlight_similar_words(sentence, preset_sentence):
     highlighted_sentence = ""
     highlighted_answer = ""
     
-    sentence_words = sentence.split()
     preset_words = preset_sentence.split()
     temp = list(preset_words)
-    
-    for word in sentence_words:
-        wordl = word.replace('.', '')
-        ccword = word.capitalize()
-        lllword = word.lower()
-        if wordl in preset_words:
-            highlighted_sentence += f"<span class='highlight'>{word}</span> "
-            preset_words.remove(f"{wordl}")
-        elif word in preset_words:
-            highlighted_sentence += f"<span class='highlight'>{word}</span> "
-            preset_words.remove(f"{word}")
-        elif ccword in preset_words:
-            highlighted_sentence += f"<span class='highlight'>{word}</span> "
-            preset_words.remove(f"{ccword}")
-        elif lllword in preset_words:
-            highlighted_sentence += f"<span class='highlight'>{word}</span> "
-            preset_words.remove(f"{lllword}")
-        else:
-            wordd = word+"."
-            if wordd in preset_words:
-                highlighted_sentence += f"<span class='highlight'>{word}</span> "
-                preset_words.remove(f"{wordd}")
-            else:
-                highlighted_sentence += f"<span class='highlight2'>{word}</span> "
-                if word in preset_words:
-                    preset_words.remove(f"{word}")
 
-    for word in temp:
-        wordm = word.replace('.', '')
-        llword = word.lower()
-        cccword = word.capitalize()
-        if wordm in sentence_words:
-            highlighted_answer += f"<span class='highlight'>{word}</span> "
-            sentence_words.remove(f"{wordm}")
-        elif word in sentence_words:
-            highlighted_answer += f"<span class='highlight'>{word}</span> "
-            sentence_words.remove(f"{word}")
-        elif llword in sentence_words:
-            highlighted_answer += f"<span class='highlight'>{word}</span> "
-            sentence_words.remove(f"{llword}")
-        elif cccword in sentence_words:
-            highlighted_answer += f"<span class='highlight'>{word}</span> "
-            sentence_words.remove(f"{cccword}")
+    for word in sentence.split():
+        if word.replace('.','').upper() in preset_sentence.replace('.','').upper():
+            highlighted_sentence += f"<span class='highlight'>{word}</span> "
         else:
-            worde = word+"."
-            if worde in sentence_words:
-                highlighted_answer += f"<span class='highlight'>{word}</span> "
-                sentence_words.remove(f"{worde}")
-            else:
-                highlighted_answer += f"<span class='highlight3'>{word}</span> "
-                if word in sentence_words:
-                    sentence_words.remove(f"{word}")
+            highlighted_sentence += f"<span class='highlight2'>{word}</span> "
+              
+    for word in preset_sentence.split():
+        if word.replace('.','').upper() in sentence.replace('.','').upper():
+            highlighted_answer += f"<span class='highlight'>{word}</span> "
+        else:
+            highlighted_answer += f"<span class='highlight3'>{word}</span> "
+
+    # for word in temp:
+    #     wordm = word.replace('.', '')
+    #     llword = word.lower()
+    #     cccword = word.capitalize()
+    #     if wordm in sentence_words:
+    #         highlighted_answer += f"<span class='highlight'>{word}</span> "
+    #         sentence_words.remove(f"{wordm}")
+    #     elif word in sentence_words:
+    #         highlighted_answer += f"<span class='highlight'>{word}</span> "
+    #         sentence_words.remove(f"{word}")
+    #     elif llword in sentence_words:
+    #         highlighted_answer += f"<span class='highlight'>{word}</span> "
+    #         sentence_words.remove(f"{llword}")
+    #     elif cccword in sentence_words:
+    #         highlighted_answer += f"<span class='highlight'>{word}</span> "
+    #         sentence_words.remove(f"{cccword}")
+    #     else:
+    #         worde = word+"."
+    #         if worde in sentence_words:
+    #             highlighted_answer += f"<span class='highlight'>{word}</span> "
+    #             sentence_words.remove(f"{worde}")
+    #         else:
+    #             highlighted_answer += f"<span class='highlight3'>{word}</span> "
+    #             if word in sentence_words:
+    #                 sentence_words.remove(f"{word}")
     arr = [highlighted_answer.strip(), highlighted_sentence.strip()]
     return arr
 
