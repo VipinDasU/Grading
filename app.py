@@ -29,12 +29,20 @@ def highlight_similar_words(sentence, preset_sentence):
     
     for word in sentence_words:
         wordl = word.replace('.', '')
+        ccword = word.capitalize()
+        lllword = word.lower()
         if wordl in preset_words:
             highlighted_sentence += f"<span class='highlight'>{word}</span> "
             preset_words.remove(f"{wordl}")
         elif word in preset_words:
             highlighted_sentence += f"<span class='highlight'>{word}</span> "
             preset_words.remove(f"{word}")
+        elif ccword in preset_words:
+            highlighted_sentence += f"<span class='highlight'>{word}</span> "
+            preset_words.remove(f"{ccword}")
+        elif lllword in preset_words:
+            highlighted_sentence += f"<span class='highlight'>{word}</span> "
+            preset_words.remove(f"{lllword}")
         else:
             wordd = word+"."
             if wordd in preset_words:
@@ -47,12 +55,20 @@ def highlight_similar_words(sentence, preset_sentence):
 
     for word in temp:
         wordm = word.replace('.', '')
+        llword = word.lower()
+        cccword = word.capitalize()
         if wordm in sentence_words:
             highlighted_answer += f"<span class='highlight'>{word}</span> "
             sentence_words.remove(f"{wordm}")
         elif word in sentence_words:
             highlighted_answer += f"<span class='highlight'>{word}</span> "
             sentence_words.remove(f"{word}")
+        elif llword in sentence_words:
+            highlighted_answer += f"<span class='highlight'>{word}</span> "
+            sentence_words.remove(f"{llword}")
+        elif cccword in sentence_words:
+            highlighted_answer += f"<span class='highlight'>{word}</span> "
+            sentence_words.remove(f"{cccword}")
         else:
             worde = word+"."
             if worde in sentence_words:
