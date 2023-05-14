@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+    <style>
+        .highlight{
+            background-color: lightgreen;
+        }
+        .highlight2{
+            background-color: lightcoral;
+        }.highlight3{
+            background-color: lightgrey;
+        }
+    </style>
+</head>
+<body>
+    <h1>Result</h1>
+    <p>Difference Ratio: {{ similarity_ratio }}</p>
+    <p>Correct Answer: {{ preset_sentence | safe }}</p>
+    <p>My Answer: {{ highlighted_sentence | safe }}</p>
+</body>
+</html>
